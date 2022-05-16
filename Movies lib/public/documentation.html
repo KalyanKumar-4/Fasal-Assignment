@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>myFlix</title>
+    <style>
+      th,
+      td {
+        border: 1px solid black;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Documentation</h1>
+    <p>
+      "MyFlix" is a web application that provides users with access to
+      information about different movies, directors, and genres. Users are able
+      to sign up, update their personal information, and create a list of their
+      favorite movies. <br />
+      The server-side of the application (server, business logic, business
+      layers) consists of a REST API and architected database built using
+      JavaScript, Node.js, Express, and MongoDB.
+    </p>
+    <h2>Movie requests</h2>
+    <table class="request-table" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Request</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Get a list of all movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>JSON object holding data about all movies</td>
+        </tr>
+        <tr>
+          <td>Get data about a single movie by title</td>
+          <td>/movies/[Title]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object holding data about a single movie, containing title,
+            description, genre, director, imageURL, featured or not. <br />
+            Example:<br />
+            {<br />
+            _id: ObjectId("5dbc2d5e1c8922ba13eb0367"),<br />
+            Title: "Bohemian Rhapsody",<br />
+            ReleaseYear: "2018",<br />
+            Description: "A chronicle of the rock band Queen, who rose to fame
+            thanks to their revolutionary sound and the theatrics of their front
+            man, the iconic Freddie Mercury, culminating in their reunion for
+            the historic set they played at Live Aid in July 1985.",<br />
+            Genre: {<br />
+            Name: "Musical Drama",<br />
+            Description: "This movie type features a dramatic plot with a strong
+            musical presence. Often concerning people connected to the
+            entertainment business in some form, the soundtrack is often used to
+            comment or illustrate on the mood of the characters."<br />
+            },<br />
+            Director: {<br />
+            Name: "Brian Singer",<br />
+            Bio: "Hailed as one of the film industry`s most exciting and
+            provocative new talents after the huge success of The Usual Suspects
+            (1995), director Bryan Singer has built his reputation on making
+            films that are essentially lengthy, verbally dexterous flirtations
+            with the darker side of human nature.",<br />
+            Birth: "1965",<br />
+            Death: null<br />
+            },<br />
+            ImagePath:
+            "https://www.allmovie.com/movie/bohemian-rhapsody-v670695",<br />
+            Featured: true<br />
+            }<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a genre by name</td>
+          <td>/movies/genres/[Name]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about a movie genre containing name and
+            description.<br />
+            Example:<br />
+            Genre: {<br />
+            Name: "Musical Drama",<br />
+            Description: "This movie type features a dramatic plot with a strong
+            musical presence. Often concerning people connected to the
+            entertainment business in some form, the soundtrack is often used to
+            comment or illustrate on the mood of the characters."<br />
+            },<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Get data about a director by name</td>
+          <td>/movies/directors/[Name]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object holding data about a director, containing name, bio,
+            date of birth and death.<br />
+            Example:<br />
+            Director: {<br />
+            Name: "Brian Singer",<br />
+            Bio: "Hailed as one of the film industry`s most exciting and
+            provocative new talents after the huge success of The Usual Suspects
+            (1995), director Bryan Singer has built his reputation on making
+            films that are essentially lengthy, verbally dexterous flirtations
+            with the darker side of human nature.",<br />
+            Birth: "1965",<br />
+            Death: null<br />
+            },<br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>User Requests</h2>
+    <table class="request-table" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Request</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Get a list of all users</td>
+          <td>/users</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>JSON object holding data about all users</td>
+        </tr>
+        <tr>
+          <td>Get a user by username</td>
+          <td>/users/[Username]</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            JSON object holding data about a single user<br />
+            Example:<br />
+            {<br />
+            _id: ObjectId("5dbc321bc1b53da3c6a82d14"),<br />
+            Username: "superHero",<br />
+            Password: "34Ug679"<br />
+            Email: "hero@gmail.com",<br />
+            Birthday: "1983-05-10",<br />
+            Favorites: []<br />
+            }
+          </td>
+        </tr>
+        <tr>
+          <td>Add a new user</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>
+            JSON object holding data about a user, structured like:<br />
+            {<br />
+            Username: "zekhy",<br />
+            Password: "k6m6QGy",<br />
+            Email: "mister@yahoo.com",<br />
+            Birthday: "1979-02-18",<br />
+            }
+          </td>
+          <td>
+            JSON object holding data about the user that was added, including an
+            ID.<br />
+            Example<br />
+            {<br />
+            _id: ObjectId("5dbc853bc1b53da3c6d82d14"),<br />
+            Username: "zekhy",<br />
+            Password: "k6m6QGy",<br />
+            Email: "mister@yahoo.com",<br />
+            Birthday: "1979-02-18",<br />
+            Favorites: []<br />
+            }
+          </td>
+        </tr>
+        <tr>
+          <td>Update user information by username</td>
+          <td>/users/[Username]</td>
+          <td>PUT</td>
+          <td>
+            JSON object holding data to be updated, structured like:<br />
+            {<br />
+            Username: "Newzekhy",<br />
+            Password: "Newk6m6QGy",<br />
+            Email: "Newlady@yahoo.com",<br />
+            Birthday: "1979-02-18",<br />
+            Favorites: []<br />
+            }
+          </td>
+          <td>
+            JSON data holding updated user info.<br />
+            Example:<br />
+            {<br />
+            _id: ObjectId("5dbc853bc1b53da3c6d82d14")<br />
+            Username: "Newzekhy",<br />
+            Password: "Newk6m6QGy",<br />
+            Email: "Newlady@yahoo.com",<br />
+            Birthday: "1979-02-18",<br />
+            Favorites: []<br />
+            }
+          </td>
+        </tr>
+        <tr>
+          <td>Add a movie to list of favorites by movie ID</td>
+          <td>/users/[Username]/Movies/[MovieID]</td>
+          <td>POST</td>
+          <td>None</td>
+          <td>
+            A text message indicating the movie was added to the list of
+            favorites and the updated list of favorites.<br />
+            Example:<br />
+            "The movie with ID 5dbc2d5e1c8922ba13eb0367 was successfully added
+            to list of favorites. <br />
+            Favorites of superHero: 5dbc2a891c8922ba13eb0363,
+            5dbc2d5e1c8922ba13eb0367"
+          </td>
+        </tr>
+        <tr>
+          <td>Remove a movie from the list of favorites by movie ID</td>
+          <td>/users/[Username]/Movies/[MovieID]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>
+            A text message indicating whether the movie was successfully removed
+            and the updated list of favorites.<br />
+            Example:<br />
+            "The movie with ID 5dbc2d5e1c8922ba13eb0367 was successfully deleted
+            from list of favorites.<br />
+            Favorites of superHero: 5dbc2a891c8922ba13eb0363"
+          </td>
+        </tr>
+        <tr>
+          <td>Remove user by username</td>
+          <td>/users/[Username]</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>
+            A text message indicating whether the user account was successfully
+            deleted.<br />
+            Example:<br />
+            "superHero was deleted."
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

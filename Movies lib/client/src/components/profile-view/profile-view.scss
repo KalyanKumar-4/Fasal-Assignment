@@ -1,0 +1,77 @@
+$primary-color: #522266;
+$secondary-color: #ececec;
+$font-family: 'Alegreya Sans', sans-serif;
+
+.update-button {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  color: $primary-color;
+  border-radius: 24px;
+}
+
+.update-button:hover {
+  background-color: darken($secondary-color, 20%);
+  border-color: darken($secondary-color, 20%);  
+}
+
+.update-button:focus,
+.update-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: darken($secondary-color, 20%) !important;
+}
+
+.delete-button {
+  background-color: $primary-color;  
+  border-color: $primary-color;
+  border-radius: 24px;
+  
+}
+
+.delete-button:hover {
+  background-color: lighten( $primary-color, 20% );
+  border-color: lighten( $primary-color, 20% );  
+}
+
+.delete-button:focus,
+.delete-button:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: lighten( $primary-color, 20% ) !important;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.movie-link {
+  color: $primary-color;
+}
+
+.movie-link:hover, 
+.movie-link:hover {
+  color: lighten($primary-color, 20%);
+  text-decoration: none !important;
+}
+
+.delete-movie {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+  border-radius: 24px;
+}
+
+.delete-movie:hover {
+  background-color: darken($secondary-color, 20%);
+  border-color: darken($secondary-color, 20%);  
+}
+
+.delete-movie:focus,
+.delete-movie:active {
+  outline: none !important;
+  box-shadow: none;
+  background-color: darken($secondary-color, 20%) !important;
+}
+
+.bin {
+  color: $primary-color;
+}
