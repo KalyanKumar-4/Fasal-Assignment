@@ -1,4 +1,4 @@
-# myFlix-app
+# Movies Library
 
 Project built as part of CareerFoundry's Full-Stack-Web-Development-Course to demonstrate the mastery of full-stack JavaScript develpoment with MERN stack.
 
